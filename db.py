@@ -8,7 +8,9 @@ class DB:
     def add_user(self, chat_id: str, username: str) -> int:
         user = {
             'chat_id': chat_id,
-            'username': username
+            'username': username,
+            'like': 0,
+            'dislike': 0
         }
         return self.db.insert(user)
 
@@ -16,7 +18,15 @@ class DB:
         user = Query()
         return self.db.contains(user.chat_id == chat_id)
     
+    def inc_like(self, chat_id: str) -> None:
+        pass
+    
+    def inc_dislike(self, chat_id: str) -> None:
+        pass
+
+    def get_data(self, chat_id: str) -> dict:
+        pass
 
 db = DB()
-# db.add_user('3241234123', 'jumanovdiyorbek')
-print(db.is_user('3241234123'))
+db.add_user('3241234123', 'jumanovdiyorbek')
+# print(db.is_user('3241234123'))
